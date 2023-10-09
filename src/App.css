@@ -1,0 +1,159 @@
+button {
+  margin: 10px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: #fff;
+  padding: 23px 50px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  border: 0px;
+  cursor: pointer;
+}
+.green {
+  background-color: rgb(6, 172, 0);
+}
+.red {
+  background-color: rgb(221, 52, 66);
+}
+.red:disabled {
+  background-color: rgb(193, 191, 191);
+  cursor: not-allowed;
+}
+.cart {
+  text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	/* background: #fbfbfb; */
+	background: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #3b40bb;
+}
+
+.grey-txt {
+	color: #aaabab;
+}
+
+#wrapper {
+	overflow: hidden;
+}
+
+.user-form label {
+	color: #aaabab;
+}
+
+.user-form input {
+	border: none;
+	border-bottom: 1px solid #dee2e6;
+	border-radius: 0;
+}
+
+.user-form input[type="submit"] {
+	height: 48px;
+}
+
+.or-text {
+	position: relative;
+	z-index: 2;
+}
+
+.or-text span {
+	position: relative;
+	z-index: 2;
+	background: #fff;
+}
+
+.or-text:after {
+	content: '';
+	position: absolute;
+	top: 11px;
+	right: 0;
+	left: 0;
+	height: 1px;
+	background: #dee2e6;
+	z-index: -1;
+}
+
+.navbar-brand img {
+	height: 50px;
+}
+
+.filter-section {}
+
+.filter-section .search-filter-box {
+	background-color: #D7D8D6;
+	width: 100%;
+	padding: 1rem;
+	font-size: 14px;
+}
+
+.filter-section .search-filter-box input,
+.filter-section .search-filter-box select,
+.filter-section .search-filter-box .input-group-text {
+	font-size: 12px;
+}
+
+/* .filter-section .search-filter-box select {
+	max-width: 100px;
+}
+
+.filter-section .search-filter-box input[type=number] {
+	width: 10px;
+} */
+
+.listing {}
+
+.listing .search-result a {
+	color: #000;
+}
+
+.search-result a.wishlist-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: lightgrey;
+	cursor: pointer;
+}
+
+.red-heart {
+	color: red;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 992px) {
+	.navbar-brand img {
+		height: 68px;
+	}
+
+}
+
+@media screen and (min-width: 1200px) {
+	.navbar-brand img {
+		height: 68px;
+	}
+
+}
