@@ -12,6 +12,11 @@ const Header = () => {
     dispatch(logout());
   }, [dispatch]);
 
+  const handlePropertySearchClick = (e) => {
+    e.preventDefault();  // prevent the default link behavior
+    window.location.reload();  // reload the page
+  };
+
   return (
       <header id="header">
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -46,7 +51,7 @@ const Header = () => {
                 {isLoggedIn && (
                   <>
                     <li className="navbar-item">
-                      <Link to="/property-search" className='nav-link'>Home</Link>
+                      <Link to="/property-search" className='nav-link'  onClick={handlePropertySearchClick}>Property Search</Link>
                     </li>
                     <li className="navbar-item">
                       <Link to="/favorites" className='nav-link'>My Favorites</Link>

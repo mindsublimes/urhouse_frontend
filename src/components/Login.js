@@ -25,11 +25,9 @@ const Login = () => {
     // if (checkBtn.current.context._errors.length === 0) {
     dispatch(login(username, password))
     .then(() => {
-        debugger
         navigate("/property-search");
     })
     .catch((error) => {
-        debugger
         setError(error?.response?.data?.error || "Login failed. Please check your credentials.");
     });
   };

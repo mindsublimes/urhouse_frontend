@@ -21,7 +21,6 @@ function PropertyUpdate(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-      debugger
       if (property) {
           setTitle(property.title);
           setPricePerMonth(property.price_per_month)

@@ -117,7 +117,6 @@ const fetchFavoritesFailure = (error) => ({
 
 export const fetchFavorites = () => (dispatch) => {
   dispatch(fetchFavoritesRequest());
-  debugger
   PropertyService.getFavoriteProperties()
     .then(response => {
       dispatch(fetchFavoritesSuccess(response.data));

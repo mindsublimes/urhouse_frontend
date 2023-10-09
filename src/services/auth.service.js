@@ -18,14 +18,12 @@ const register = (email, password, password_confirmation) => {
       }
       return response.data;
     }).catch((error) => {
-      debugger
       // Return an error with a message
       return Promise.reject(error.response.data.errors[0]);
     });
 };
 
 const login = (username, password) => {
-  debugger
   const requestData = {
     user: {
       email: username,
@@ -43,7 +41,6 @@ const login = (username, password) => {
       }
       return response.data;
     }).catch((error) => {
-      debugger
       // Return an error with a message
       return Promise.reject("Network error. Please try again later.");
     });

@@ -26,6 +26,7 @@ const Home = () => {
     number_of_rooms: "",
     mrt: ""
   });
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllProperties(currentPage));
@@ -55,23 +56,32 @@ const Home = () => {
 
   
 const handleSearch = (e) => {
-  e.preventDefault();
-  const updatedSearchParams = {
-    ...searchParams,
-    address: `${searchParams.city} ${searchParams.district}`
-  };
-  
-  // Omit city and district from the searchParams if needed
-  delete updatedSearchParams.city;
-  delete updatedSearchParams.district;
+    e.preventDefault();
 
-  dispatch(searchProperties(updatedSearchParams)) 
-    .then(() => {
-      console.log("Search completed");
-    })
-    .catch((error) => {
-      console.log("Search not completed");
-    });
+    const values = Object.values(searchParams);
+    if (values.every(value => !value)) {
+      alert("Please select at least one filter before searching!");
+      return;
+    }
+    else{
+      setHasSearched(true);
+      const updatedSearchParams = {
+        ...searchParams,
+        address: `${searchParams.city} ${searchParams.district}`
+      };
+      
+      // Omit city and district from the searchParams if needed
+      delete updatedSearchParams.city;
+      delete updatedSearchParams.district;
+
+      dispatch(searchProperties(updatedSearchParams)) 
+        .then(() => {
+          console.log("Search completed");
+        })
+        .catch((error) => {
+          console.log("Search not completed");
+        });
+  }
 };
 
 
@@ -218,52 +228,54 @@ const handleSearch = (e) => {
                 </div>
               ))}
             </div>
-            <div className="row">
-              <div className="col">
-                <nav aria-label="Page navigation example">
-                  <ul className="pagination justify-content-center">
-                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                      <a
-                        className="page-link"
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          if (currentPage > 1) handlePageChange(currentPage - 1);
-                        }}
-                      >
-                        Previous
-                      </a>
-                    </li>
-                    {[...Array(5)].map((_, index) => (
-                      <li className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} key={index}>
+            {!hasSearched && (
+              <div className="row">
+                <div className="col">
+                  <nav aria-label="Page navigation example">
+                    <ul className="pagination justify-content-center">
+                      <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                         <a
                           className="page-link"
                           href="#"
                           onClick={(e) => {
                             e.preventDefault();
-                            handlePageChange(index + 1);
+                            if (currentPage > 1) handlePageChange(currentPage - 1);
                           }}
                         >
-                          {index + 1}
+                          Previous
                         </a>
                       </li>
-                    ))}
-                    <li className={`page-item ${currentPage === 5 ? 'disabled' : ''}`}>
-                      <a
-                        className="page-link"
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          if (currentPage < 5) handlePageChange(currentPage + 1);
-                        }}
-                      >
-                        Next
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+                      {[...Array(5)].map((_, index) => (
+                        <li className={`page-item ${currentPage === index + 1 ? 'active' : ''}`} key={index}>
+                          <a
+                            className="page-link"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handlePageChange(index + 1);
+                            }}
+                          >
+                            {index + 1}
+                          </a>
+                        </li>
+                      ))}
+                      <li className={`page-item ${currentPage === 5 ? 'disabled' : ''}`}>
+                        <a
+                          className="page-link"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (currentPage < 5) handlePageChange(currentPage + 1);
+                          }}
+                        >
+                          Next
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
