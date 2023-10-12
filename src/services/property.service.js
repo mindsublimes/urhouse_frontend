@@ -4,7 +4,7 @@ import axios from 'axios';
 import authHeader from './auth-header';
 
 
-const API_URL = "http://localhost:3003/api/v1/";
+const API_URL = "http://localhost:3000/api/v1/";
 
 const getAllProperties = (page = 1, perPage = 6) => {
     return axios.get(`${API_URL}properties?page=${page}&per_page=${perPage}`, { headers: authHeader() });
